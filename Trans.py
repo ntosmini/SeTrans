@@ -54,7 +54,7 @@ def multiSelenium(process):
 	if TransSite == "" :
 		print("번역 미실행중")
 	elif TransSite == "push" :
-		os.system('cd C:\\xampp\\htdocs\\_Ntos\\_Trans')
+		os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
 		os.system('git status')
 		os.system('git add .')
 		os.system('git commit -m "NtosMini"')
