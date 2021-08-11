@@ -5,13 +5,16 @@
 import requests
 
 NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
+
+TransMode = ""
 try :
 	response = requests.get(NtosTransConfigUrl)
+	TransMode = response.text
 except :
-	response = ""
+	TransMode = ""
 
 
-TransMode = response.text
+
 
 if TransMode == "" :
 	exit()

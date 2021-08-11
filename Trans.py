@@ -62,13 +62,14 @@ def multiSelenium(process):
 	else : 
 
 		data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
+		result = ""
 		try :
 			response = requests.post(NtosUrl, data=data)
+			result = response.text
 		except :
-			response = ""
+			result = ""
 
 
-		result = response.text
 		if result == "" :
 			exit()
 		else :
@@ -169,15 +170,17 @@ def multiSelenium(process):
 				f.close()
 				"""
 				data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'transup', 'TransOrigin':TransOrigin, 'TransUp':TransUp, 'codelist':TransItemCode, 'namelist' : name_list, 'orgnamelist' : TransItemName } 
+				Result = ""
 				try :
 					response = requests.post(NtosUrl, data=data)
+					Result = response.text
 				except :
-					response = ""
+					Result = "Up 실패"
 				"""
 				print("====================" + process + "=========================")
 				print(name_list)
 				"""
-				Result = response.text
+				
 				Time_ = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 				print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ Time_+"\n")
 
