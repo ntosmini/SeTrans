@@ -44,6 +44,7 @@ def multiSelenium(process):
 	from _common import Pc
 	from _common import Server
 
+	Pc = str(Pc)
 
 	from _Run import TransType
 	TransSite = TransType[0]	#Papago, Google
@@ -56,13 +57,21 @@ def multiSelenium(process):
 	if TransSite == "" :
 		print("번역 미실행중")
 	elif TransSite == "push" :
-		os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
-		os.system('git status')
-		os.system('git add .')
-		os.system('git commit -m "Ntos"')
-		os.system('git push -u origin master')
+		if process == "1" and Pc == "1" :
+			os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
+			os.system('git status')
+			os.system('git add .')
+			os.system('git commit -m "Ntos"')
+			os.system('git push -u origin master')
+		else :
+			pass
 	elif TransSite == "pull" :
-		pass
+		if process == "1" and Pc != "1" :
+			os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
+			os.system('git fetch --all')
+			os.system('git reset --hard origin/master')
+		else :
+			pass
 	else : 
 
 		data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
