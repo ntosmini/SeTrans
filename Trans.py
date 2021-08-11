@@ -64,14 +64,14 @@ def multiSelenium(process):
 			os.system('git commit -m "Ntos"')
 			os.system('git push -u origin master')
 		else :
-			pass
+			print("Git push...")
 	elif TransSite == "pull" :
 		if process == "1" and Pc != "1" :
 			os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
 			os.system('git fetch --all')
 			os.system('git reset --hard origin/master')
 		else :
-			pass
+			print("Git pull...")
 	else : 
 
 		data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
