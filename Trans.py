@@ -188,7 +188,7 @@ def multiSelenium(process):
 				"""
 				Result = response.text
 				Time_ = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-				print("Pc"+Pc+"["+process+"] >>> "+Result+" : "+ Time_)
+				print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ Time_+"\n")
 
 
 				driver.close();
