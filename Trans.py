@@ -84,7 +84,7 @@ else :
 		# 번역
 		def multiSelenium(process):
 
-			slp = (int(process) - 1) * 9
+			slp = (int(process) - 1) * 6
 			time.sleep(slp)
 
 
