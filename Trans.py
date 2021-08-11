@@ -74,11 +74,13 @@ else :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
 		else :
 			print("Git push...")
+			time.sleep(5)
 	elif TransSite == "pull" :
 		if Pc != "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
 		else :
 			print("Git pull...")
+			time.sleep(5)
 	else : 
 
 
