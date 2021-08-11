@@ -25,11 +25,11 @@ import multiprocessing
 
 # 실행 PC 리스트 가져오기
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from _common import process_list
+from _common import *
 
 
 
-
+Pc = str(Pc)
 
 
 
@@ -38,13 +38,6 @@ def multiSelenium(process):
 
 	slp = (int(process) - 1) * 9
 	time.sleep(slp)
-
-	# 실행 PC 리스트 가져오기
-	sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-	from _common import Pc
-	from _common import Server
-
-	Pc = str(Pc)
 
 	from _Run import TransType
 	TransSite = TransType[0]	#Papago, Google
