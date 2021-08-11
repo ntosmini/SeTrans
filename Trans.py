@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-from time import sleep
+import time
 import threading
 
 import multiprocessing
@@ -37,7 +37,7 @@ from _common import process_list
 def multiSelenium(process):
 
 	slp = (int(process) - 1) * 9
-	sleep(slp)
+	time.sleep(slp)
 
 	# 실행 PC 리스트 가져오기
 	sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -53,7 +53,7 @@ def multiSelenium(process):
 	TransLeng = TransType[3]	#번역사이트 언어설정
 	TransOrigin = TransType[4]	#번역할 필드
 	TransUp = TransType[5]	#업데이트할 필드
-	TransSite = "push"
+
 	if TransSite == "" :
 		print("번역 미실행중")
 	elif TransSite == "push" :
@@ -153,14 +153,14 @@ def multiSelenium(process):
 				input_box = driver.find_element_by_xpath('/html/body/div/div/div[1]/section/div/div[1]/div[1]/div/div[3]/label/textarea')
 			else :
 				input_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[2]/c-wiz[1]/span/span/div/textarea')
-			sleep(1)
+			time.sleep(1)
 			
 			input_box.send_keys(TransItemName)
 			#pyperclip.copy(TransItemName)
 			#input_box.send_keys(Keys.CONTROL, 'v')
 
 			#driver.implicitly_wait(7)
-			sleep(10)
+			time.sleep(10)
 
 			if TransSite == "Papago" :
 				trans_box = driver.find_element_by_xpath('/html/body/div/div/div[1]/section/div/div[1]/div[2]/div/div[5]/div')
@@ -181,13 +181,15 @@ def multiSelenium(process):
 			try :
 				response = requests.post(NtosUrl, data=data)
 			except :
-				sleep(2)
+				time.sleep(2)
 				response = requests.post(NtosUrl, data=data)
 			"""
 			print("====================" + process + "=========================")
 			print(name_list)
 			"""
-			print(response.text)
+			Result = response.text
+			Time_ = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+			print(Result+" : "+ Time_)
 
 
 			driver.close();
@@ -195,11 +197,14 @@ def multiSelenium(process):
 
 if __name__ == '__main__':
 
+
 	# 프로세스 3개
 	#process_list = ["1", "2", "3"] #../_common.py
-
+	#DriverJob = threading.Timer(10, ProcessQuit)
+	#DriverJob.start()
 	# 멀티 프로세스 사용
 	pool = multiprocessing.Pool(processes=len(process_list))
 	pool.map(multiSelenium, process_list)
 	pool.close()
 	pool.join()
+	sys.exit()
