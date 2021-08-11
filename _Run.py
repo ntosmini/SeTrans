@@ -8,8 +8,7 @@ NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
 try :
 	response = requests.get(NtosTransConfigUrl)
 except :
-	time.sleep(2)
-	response = requests.get(NtosTransConfigUrl)
+	response = ""
 
 
 TransMode = response.text

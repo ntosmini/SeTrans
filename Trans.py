@@ -72,8 +72,7 @@ def multiSelenium(process):
 		try :
 			response = requests.post(NtosUrl, data=data)
 		except :
-			time.sleep(2)
-			response = requests.post(NtosUrl, data=data)
+			response = ""
 
 
 		result = response.text
@@ -180,8 +179,7 @@ def multiSelenium(process):
 				try :
 					response = requests.post(NtosUrl, data=data)
 				except :
-					time.sleep(2)
-					response = requests.post(NtosUrl, data=data)
+					response = ""
 				"""
 				print("====================" + process + "=========================")
 				print(name_list)
