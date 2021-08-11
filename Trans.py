@@ -69,7 +69,11 @@ def multiSelenium(process):
 	else : 
 
 		data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
-		response = requests.post(NtosUrl, data=data)
+		try :
+			response = requests.post(NtosUrl, data=data)
+		except :
+			time.sleep(2)
+			response = requests.post(NtosUrl, data=data)
 
 
 
@@ -183,7 +187,7 @@ def multiSelenium(process):
 			"""
 			Result = response.text
 			Time_ = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-			print(Result+" : "+ Time_)
+			print("Pc"+Pc+" ("+process+") > "+Result+" : "+ Time_)
 
 
 			driver.close();
