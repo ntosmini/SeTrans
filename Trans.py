@@ -49,44 +49,48 @@ if time.strftime('%M', time.localtime(time.time())) == "100" :
 		except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):   #예외처리
 			pass
 else :
+	
+	from _Run import TransType
 
 	# 실행 PC 리스트 가져오기
 	sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 	from _common import *
 
-
-
 	Pc = str(Pc)
 
 
+	TransSite = TransType[0]	#Papago, Google
+	NtosUrl = TransType[1]	#Ntos 번역 Url
+	CustId = TransType[2]	#Ntos Id
+	TransLeng = TransType[3]	#번역사이트 언어설정
+	TransOrigin = TransType[4]	#번역할 필드
+	TransUp = TransType[5]	#업데이트할 필드
 
-	# 번역
-	def multiSelenium(process):
 
-		slp = (int(process) - 1) * 9
-		time.sleep(slp)
+	if TransSite == "" :
+		print("번역 미실행중")
+	elif TransSite == "push" :
+		if Pc == "1" :
+			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
+		else :
+			print("Git push...")
+	elif TransSite == "pull" :
+		if Pc != "1" :
+			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
+		else :
+			print("Git pull...")
+	else : 
 
-		from _Run import TransType
-		TransSite = TransType[0]	#Papago, Google
-		NtosUrl = TransType[1]	#Ntos 번역 Url
-		CustId = TransType[2]	#Ntos Id
-		TransLeng = TransType[3]	#번역사이트 언어설정
-		TransOrigin = TransType[4]	#번역할 필드
-		TransUp = TransType[5]	#업데이트할 필드
 
-		if TransSite == "" :
-			print("번역 미실행중")
-		elif TransSite == "push" :
-			if process == "1" and Pc == "1" :
-				os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
-			else :
-				print("Git push...")
-		elif TransSite == "pull" :
-			if process == "1" and Pc != "1" :
-				os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
-			else :
-				print("Git pull...")
-		else : 
+		# 번역
+		def multiSelenium(process):
+
+			slp = (int(process) - 1) * 9
+			time.sleep(slp)
+
+
+
+
 
 			data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
 			result = ""
@@ -218,16 +222,16 @@ else :
 					driver.close();
 
 
-	if __name__ == '__main__':
+		if __name__ == '__main__':
 
 
-		# 프로세스 3개
-		#process_list = ["1", "2", "3"] #../_common.py
-		#DriverJob = threading.Timer(10, ProcessQuit)
-		#DriverJob.start()
-		# 멀티 프로세스 사용
-		pool = multiprocessing.Pool(processes=len(process_list))
-		pool.map(multiSelenium, process_list)
-		pool.close()
-		pool.join()
-		sys.exit()
+			# 프로세스 3개
+			#process_list = ["1", "2", "3"] #../_common.py
+			#DriverJob = threading.Timer(10, ProcessQuit)
+			#DriverJob.start()
+			# 멀티 프로세스 사용
+			pool = multiprocessing.Pool(processes=len(process_list))
+			pool.map(multiSelenium, process_list)
+			pool.close()
+			pool.join()
+			sys.exit()
