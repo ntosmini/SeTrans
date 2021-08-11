@@ -58,18 +58,12 @@ def multiSelenium(process):
 		print("번역 미실행중")
 	elif TransSite == "push" :
 		if process == "1" and Pc == "1" :
-			os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
-			os.system('git status')
-			os.system('git add .')
-			os.system('git commit -m "Ntos"')
-			os.system('git push -u origin master')
+			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
 		else :
 			print("Git push...")
 	elif TransSite == "pull" :
 		if process == "1" and Pc != "1" :
-			os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
-			os.system('git fetch --all')
-			os.system('git reset --hard origin/master')
+			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
 		else :
 			print("Git pull...")
 	else : 
