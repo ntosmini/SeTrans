@@ -52,14 +52,14 @@ def multiSelenium(process):
 	TransLeng = TransType[3]	#번역사이트 언어설정
 	TransOrigin = TransType[4]	#번역할 필드
 	TransUp = TransType[5]	#업데이트할 필드
-	#TransSite = "push"
+	TransSite = "push"
 	if TransSite == "" :
 		print("번역 미실행중")
 	elif TransSite == "push" :
 		os.system('cd C:\\xampp\\htdocs\\_Ntos\\_TransSelenium')
-		os.system('git status')
 		os.system('git add .')
-		os.system('git commit -m "NtosMini"')
+		os.system('git status')
+		os.system('git commit -m "Ntos"')
 		os.system('git push -u origin master')
 	elif TransSite == "pull" :
 		pass
