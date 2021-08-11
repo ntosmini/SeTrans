@@ -25,13 +25,15 @@ import re
 #import pyperclip
 
 
+def ViewTime() :
+	return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
 
 
 if time.strftime('%M', time.localtime(time.time())) == "100" :
 	# 프로세스 죽이기
 	import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
-	print('Kill Start...')
+	print('Kill Start... '+ViewTime)
 	for proc in psutil.process_iter():
 		try:
 			# 프로세스 이름, PID값 가져오기
@@ -50,15 +52,13 @@ if time.strftime('%M', time.localtime(time.time())) == "100" :
 			pass
 else :
 	
-	from _Run import TransType
-
 	# 실행 PC 리스트 가져오기
 	sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 	from _common import *
 
 	Pc = str(Pc)
 
-
+	from _Run import TransType
 	TransSite = TransType[0]	#Papago, Google
 	NtosUrl = TransType[1]	#Ntos 번역 Url
 	CustId = TransType[2]	#Ntos Id
@@ -68,18 +68,18 @@ else :
 
 
 	if TransSite == "" :
-		print("번역 미실행중")
+		print("번역 미실행중 "+ViewTime)
 	elif TransSite == "push" :
 		if Pc == "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
 		else :
-			print("Git push...")
+			print("Git push... "+ViewTime)
 			time.sleep(5)
 	elif TransSite == "pull" :
 		if Pc != "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
 		else :
-			print("Git pull...")
+			print("Git pull... "+ViewTime)
 			time.sleep(5)
 	else : 
 
@@ -110,13 +110,13 @@ else :
 
 				if result == "test" :
 					if process == "1" :
-						print("실행명령")
+						print("실행명령 "+ViewTime)
 					else :
-						print("중지")
+						print("중지 "+ViewTime)
 				elif result == "error" :
-					print('에러')
+					print('에러 '+ViewTime)
 				elif result == "not" :
-					print('번역없음')
+					print('번역없음 '+ViewTime)
 				else :
 					
 					#번역시작
@@ -217,8 +217,7 @@ else :
 					print(name_list)
 					"""
 					
-					Time_ = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-					print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ Time_+"\n")
+					print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ ViewTime +"\n")
 
 
 					driver.close();
