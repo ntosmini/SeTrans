@@ -3,23 +3,24 @@
 #기본설정
 
 import requests
+import re
+
 
 NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
 
 TransMode = ""
 try :
-	response = requests.get(NtosTransConfigUrl)
-	TransMode = response.text
+	TransMode_ = requests.get(NtosTransConfigUrl)
+	TransMode = TransMode_.text
 except :
 	TransMode = ""
 
 
 
 
-if TransMode == "" :
+if re.search("404 Not Found", TransMode ) or TransMode == "" :
 	exit()
 else :
-
 	if TransMode == "mini_de_en" :
 		TransType = [
 			'Google'	#Papago, Google

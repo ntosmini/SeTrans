@@ -19,6 +19,7 @@ import threading
 
 import multiprocessing
 
+import re
 #import pyperclip
 
 
@@ -64,13 +65,14 @@ def multiSelenium(process):
 		data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'list', 'TransOrigin':TransOrigin, 'TransUp':TransUp } 
 		result = ""
 		try :
-			response = requests.post(NtosUrl, data=data)
-			result = response.text
+			result_ = requests.post(NtosUrl, data=data)
+			result = result_.text
 		except :
 			result = ""
 
+		
 
-		if result == "" :
+		if re.search("404 Not Found", result ) or result == "" :
 			exit()
 		else :
 
@@ -172,10 +174,12 @@ def multiSelenium(process):
 				data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'transup', 'TransOrigin':TransOrigin, 'TransUp':TransUp, 'codelist':TransItemCode, 'namelist' : name_list, 'orgnamelist' : TransItemName } 
 				Result = ""
 				try :
-					response = requests.post(NtosUrl, data=data)
-					Result = response.text
+					Result_ = requests.post(NtosUrl, data=data)
+					Result = Result_.text
 				except :
 					Result = "Up 실패"
+
+				
 				"""
 				print("====================" + process + "=========================")
 				print(name_list)
