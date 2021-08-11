@@ -25,15 +25,12 @@ import re
 #import pyperclip
 
 
-def ViewTime() :
-	return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-
 
 
 if time.strftime('%M', time.localtime(time.time())) == "100" :
 	# 프로세스 죽이기
 	import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
-	print('Kill Start... '+ViewTime)
+	print('Kill Start... '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 	for proc in psutil.process_iter():
 		try:
 			# 프로세스 이름, PID값 가져오기
@@ -68,18 +65,18 @@ else :
 
 
 	if TransSite == "" :
-		print("번역 미실행중 "+ViewTime)
+		print("번역 미실행중 "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 	elif TransSite == "push" :
 		if Pc == "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
 		else :
-			print("Git push... "+ViewTime)
+			print("Git push... "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 			time.sleep(5)
 	elif TransSite == "pull" :
 		if Pc != "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
 		else :
-			print("Git pull... "+ViewTime)
+			print("Git pull... "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 			time.sleep(5)
 	else : 
 
@@ -110,13 +107,13 @@ else :
 
 				if result == "test" :
 					if process == "1" :
-						print("실행명령 "+ViewTime)
+						print("실행명령 "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 					else :
-						print("중지 "+ViewTime)
+						print("중지 "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 				elif result == "error" :
-					print('에러 '+ViewTime)
+					print('에러 '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 				elif result == "not" :
-					print('번역없음 '+ViewTime)
+					print('번역없음 '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 				else :
 					
 					#번역시작
@@ -217,7 +214,7 @@ else :
 					print(name_list)
 					"""
 					
-					print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ ViewTime +"\n")
+					print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) +"\n")
 
 
 					driver.close();
