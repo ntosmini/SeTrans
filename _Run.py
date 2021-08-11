@@ -4,7 +4,7 @@
 
 import requests
 import re
-
+import time
 
 NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
 
@@ -19,6 +19,8 @@ except :
 
 
 if re.search("404 Not Found", TransMode ) or TransMode == "" :
+	print("번역 미실행중 "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+	time.sleep(5)
 	exit()
 else :
 	if TransMode == "mini_de_en" :
