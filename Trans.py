@@ -66,6 +66,7 @@ else :
 
 	if TransSite == "" :
 		print("번역 미실행중 "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+		time.sleep(5)
 	elif TransSite == "push" :
 		if Pc == "1" :
 			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
