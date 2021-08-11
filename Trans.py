@@ -28,10 +28,9 @@ import re
 
 
 
-# 프로세스 죽이기
-import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
-
 if time.strftime('%M', time.localtime(time.time())) == "00" :
+	# 프로세스 죽이기
+	import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
 	print('Kill Start...')
 	for proc in psutil.process_iter():
 		try:
