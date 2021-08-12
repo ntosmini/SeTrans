@@ -217,7 +217,7 @@ else :
 					print(name_list)
 					"""
 					
-					print("\n\nPc"+Pc+"-"+process+" >>> "+Result+" : "+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) +"\n")
+					print("\n Pc"+Pc+"-"+process+" ==============================================\n " +Result+" : "+ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) +"\n")
 
 
 					driver.close();
