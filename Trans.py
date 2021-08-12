@@ -24,7 +24,7 @@ import multiprocessing
 import re
 #import pyperclip
 
-
+TransSave = "n"
 
 
 if time.strftime('%M', time.localtime(time.time())) == "100" :
@@ -118,7 +118,7 @@ else :
 				else :
 					
 					#번역시작
-					resultList = result.split("@@@")
+					resultList = result.split("\n\n")
 					number = 0
 					itemcodeArr = []
 					itemnameArr = []
@@ -131,11 +131,12 @@ else :
 
 					TransItemCode = "|@|".join(itemcodeArr)
 					TransItemName = "\n\n\n\n".join(itemnameArr)
-					"""
-					f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+".txt", "w",encoding='UTF-8')
-					f.write(TransItemName)
-					f.close()
-					"""
+
+					if TransSave == "y" :
+						f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+".txt", "w",encoding='UTF-8')
+						f.write(TransItemName)
+						f.close()
+
 					"""
 					print('번역실행'+TransItemName)
 					"""
@@ -196,11 +197,12 @@ else :
 					# 
 
 					name_list = trans_box.text
-					"""
-					f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+"_.txt", "w",encoding='UTF-8')
-					f.write(name_list)
-					f.close()
-					"""
+
+					if TransSave == "y" :
+						f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+"_.txt", "w",encoding='UTF-8')
+						f.write(name_list)
+						f.close()
+
 					data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'transup', 'TransOrigin':TransOrigin, 'TransUp':TransUp, 'codelist':TransItemCode, 'namelist' : name_list, 'orgnamelist' : TransItemName } 
 					Result = ""
 					try :
