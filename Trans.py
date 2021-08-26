@@ -231,7 +231,7 @@ else :
 			#DriverJob = threading.Timer(10, ProcessQuit)
 			#DriverJob.start()
 			# 멀티 프로세스 사용
-			process_list = ["1", "2"]
+			#process_list = ["1", "2"]
 			pool = multiprocessing.Pool(processes=len(process_list))
 			pool.map(multiSelenium, process_list)
 			pool.close()
