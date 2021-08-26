@@ -1,2 +1,2 @@
 echo off
-start shutdown /r /t 10
+start shutdown /r /t 30
