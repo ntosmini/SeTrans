@@ -5,7 +5,7 @@
 import requests
 import re
 import time
-
+import os
 NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
 
 TransMode = ""
@@ -89,8 +89,9 @@ else :
 			, ''	#번역할 필드
 			, ''	#업데이트할 필드
 			]
-
-
+	elif TransMode == "reboot" :	#reboot
+		os.system("C:/xampp/htdocs\_Ntos/_TransSelenium/_ReBoot.bat")
+		exit()
 	else :
 		TransType = [
 			''	#Papago, Google

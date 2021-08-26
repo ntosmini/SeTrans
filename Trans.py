@@ -69,13 +69,13 @@ else :
 		time.sleep(5)
 	elif TransSite == "push" :
 		if Pc == "1" :
-			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPush.bat")
+			os.system("C:/xampp/htdocs\_Ntos/_TransSelenium/_GitPush.bat")
 		else :
 			print("Git push... "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 			time.sleep(5)
 	elif TransSite == "pull" :
 		if Pc != "1" :
-			os.system("C:/xampp/htdocs\\_Ntos/_TransSelenium/_GitPull.bat")
+			os.system("C:/xampp/htdocs\_Ntos/_TransSelenium/_GitPull.bat")
 		else :
 			print("Git pull... "+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 			time.sleep(5)
@@ -231,6 +231,7 @@ else :
 			#DriverJob = threading.Timer(10, ProcessQuit)
 			#DriverJob.start()
 			# 멀티 프로세스 사용
+			process_list = ["1", "2"]
 			pool = multiprocessing.Pool(processes=len(process_list))
 			pool.map(multiSelenium, process_list)
 			pool.close()
