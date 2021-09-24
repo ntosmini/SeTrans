@@ -185,7 +185,7 @@ else :
 					#input_box.send_keys(Keys.CONTROL, 'v')
 
 					#driver.implicitly_wait(7)
-					time.sleep(10)
+					time.sleep(15)
 
 					if TransSite == "Papago" :
 						trans_box = driver.find_element_by_xpath('/html/body/div/div/div[1]/section/div/div[1]/div[2]/div/div[5]/div')
