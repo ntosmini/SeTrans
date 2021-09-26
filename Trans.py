@@ -27,7 +27,7 @@ import re
 TransSave = "n"
 
 
-if time.strftime('%M', time.localtime(time.time())) == "100" :
+if time.strftime('%M', time.localtime(time.time())) == "00" :
 	# 프로세스 죽이기
 	import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
 	print('Kill Start... '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
@@ -38,7 +38,7 @@ if time.strftime('%M', time.localtime(time.time())) == "100" :
 			processID = proc.pid
 			#print(processName , ' - ', processID)
 	 
-			if processName == "python.exe" or processName == "chrome.exe" :
+			if processName == "chrome.exe" or processName == "chromedriver.exe" :
 				print('kill - ', processName , ' - ', processID)
 				parent_pid = processID  #PID
 				parent = psutil.Process(parent_pid) # PID 찾기
@@ -47,6 +47,7 @@ if time.strftime('%M', time.localtime(time.time())) == "100" :
 				parent.kill()
 		except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):   #예외처리
 			pass
+	time.sleep(5)
 else :
 	
 	# 실행 PC 리스트 가져오기
