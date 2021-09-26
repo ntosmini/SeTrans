@@ -6,7 +6,15 @@ import requests
 import re
 import time
 import os
-NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans.txt";
+import sys
+
+# 실행 PC 리스트 가져오기
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+from _common import *
+
+Pc = str(Pc)
+
+NtosTransConfigUrl = "http://mini.ntos.co.kr/_Mini_/_TransSelenium/_Trans_"+ Pc +".txt";
 
 TransMode = ""
 try :
@@ -14,8 +22,6 @@ try :
 	TransMode = TransMode_.text
 except :
 	TransMode = ""
-
-
 
 
 if re.search("404 Not Found", TransMode ) or TransMode == "" :
