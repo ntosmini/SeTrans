@@ -183,7 +183,7 @@ else :
 						#driver = webdriver.Chrome('C:/xampp/htdocs/_Ntos/chromedriver.exe')
 					else :	#ubuntu
 						driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
-					driver.implicitly_wait(3)
+					#driver.implicitly_wait(3)
 
 					driver.get(url=URL)
 					driver.implicitly_wait(3)
