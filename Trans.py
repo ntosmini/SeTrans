@@ -27,7 +27,7 @@ import re
 TransSave = "n"
 
 
-if time.strftime('%M', time.localtime(time.time())) == "00" :
+if time.strftime('%M', time.localtime(time.time())) == "00" or time.strftime('%M', time.localtime(time.time())) == "30" :
 	# 프로세스 죽이기
 	import psutil   # 실행중인 프로세스 및 시스템 활용 라이브러리
 	print('Kill Start... '+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
