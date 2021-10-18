@@ -207,6 +207,7 @@ else :
 					input_box.send_keys(TransItemName)
 					#pyperclip.copy(TransItemName)
 					#input_box.send_keys(Keys.CONTROL, 'v')
+					input_box.send_keys(Keys.ENTER)
 
 					#driver.implicitly_wait(7)
 					time.sleep(15)
