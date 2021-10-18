@@ -222,19 +222,21 @@ else :
 					# 
 
 					name_list = trans_box.text
+					if name_list == "" :
+						Result = "번역안됨"
+					else :
+						if TransSave == "y" :
+							f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+"_.txt", "w",encoding='UTF-8')
+							f.write(name_list)
+							f.close()
 
-					if TransSave == "y" :
-						f = open("C:/xampp/htdocs/_Ntos/_TransSelenium/test_"+process+"_.txt", "w",encoding='UTF-8')
-						f.write(name_list)
-						f.close()
-
-					data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'transup', 'TransOrigin':TransOrigin, 'TransUp':TransUp, 'codelist':TransItemCode, 'namelist' : name_list, 'orgnamelist' : TransItemName } 
-					Result = ""
-					try :
-						Result_ = requests.post(NtosUrl, data=data)
-						Result = Result_.text
-					except :
-						Result = "Up 실패"
+						data = {'CustId':CustId, 'Pc':Pc, 'Number': process, 'Mode':'transup', 'TransOrigin':TransOrigin, 'TransUp':TransUp, 'codelist':TransItemCode, 'namelist' : name_list, 'orgnamelist' : TransItemName } 
+						Result = ""
+						try :
+							Result_ = requests.post(NtosUrl, data=data)
+							Result = Result_.text
+						except :
+							Result = "Up 실패"
 
 					
 					"""
