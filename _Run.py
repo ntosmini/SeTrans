@@ -76,6 +76,30 @@ else :
 			, 'it_name_en'	#번역할 필드
 			, 'it_name_ko'	#업데이트할 필드
 			]
+
+			
+	elif TransMode == "jp_jp_en" :
+		TransType = [
+			'Google'	#Papago, Google
+			, 'http://amazonde.ntos.co.kr/_Mini_/_TransSelenium/trans.php'	#Ntos 번역 Url
+			, 'amazonjp'		#CustId (Ntos Id)
+			, 'sl=ja&tl=en'	#번역사이트 언어설정
+			, 'it_name'	#번역할 필드
+			, 'it_name_en'	#업데이트할 필드
+			]
+
+			
+	elif TransMode == "jp_jp_ko" :
+		TransType = [
+			'Papago'	#Papago, Google
+			, 'http://amazonde.ntos.co.kr/_Mini_/_TransSelenium/trans.php'	#Ntos 번역 Url
+			, 'amazonjp'		#CustId (Ntos Id)
+			, 'sk=ja&tk=ko'	#번역사이트 언어설정
+			, 'it_name'	#번역할 필드
+			, 'it_name_ko'	#업데이트할 필드
+			]
+
+
 	elif TransMode == "push" :	#git push
 		TransType = [
 			'push'	#Papago, Google
