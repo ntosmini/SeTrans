@@ -203,6 +203,7 @@ else :
 					else :
 						#input_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[2]/c-wiz[1]/span/span/div/textarea')
 						input_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[3]/c-wiz[1]/span/span/div/textarea')
+						
 					time.sleep(1)
 					
 					input_box.send_keys(TransItemName)
@@ -216,9 +217,7 @@ else :
 					if TransSite == "Papago" :
 						trans_box = driver.find_element_by_xpath('/html/body/div/div/div[1]/section/div/div[1]/div[2]/div/div[5]/div')
 					else :
-						#trans_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[2]/c-wiz[2]/div[5]/div/div[1]')
 						trans_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[3]/c-wiz[2]/div[6]/div/div[1]')
-
 
 					#driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[2]/c-wiz[2]/div[5]/div/div[4]/div[2]/div/span/button/i').click()
 
