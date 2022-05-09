@@ -201,9 +201,9 @@ else :
 					if TransSite == "Papago" :
 						input_box = driver.find_element_by_xpath('/html/body/div/div/div[1]/section/div/div[1]/div[1]/div/div[3]/label/textarea')
 					else :
-						if TransLeng == "sl=de&tl=en"
+						if TransLeng == "sl=de&tl=en" :
 							input_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[3]/c-wiz[1]/span/span/div/textarea')
-						else
+						else :
 							input_box = driver.find_element_by_xpath('/html/body/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[2]/c-wiz[1]/span/span/div/textarea')
 						
 					time.sleep(1)
